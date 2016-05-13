@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Data Science Portfolio - Joel Nik</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">Data Science Portfolio </a></h1>
+                <nav><ul>
+                    <li><a href="/category/test.html">Test</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="/my-first-project.html">My First Project</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2016-05-12T00:00:00+02:00">
+                Published: Thu 12 May 2016
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/joel-nik.html">Joel Nik</a>
+        </address>
+<p>In <a href="/category/test.html">Test</a>.</p>
+
+</footer><!-- /.post-info --><h1>Chopsticks!</h1>
+<p>A few researchers set out to determine the optimal length of chopsticks for children and adults. They came up with a measure of how effective a pair of chopsticks performed, called the "Food Pinching Performance." The "Food Pinching Performance" was determined by counting the number of peanuts picked and placed in a cup (PPPC).</p>
+<h3>An investigation for determining the optimum length of chopsticks.</h3>
+<p><a href="http://www.ncbi.nlm.nih.gov/pubmed/15676839">Link to Abstract and Paper</a><br />
+<em>the abstract below was adapted from the link</em></p>
+<p>Chopsticks are one of the most simple and popular hand tools ever invented by humans, but have not previously been investigated by <a href="https://www.google.com/search?q=ergonomists">ergonomists</a>. Two laboratory studies were conducted in this research, using a <a href="http://dawg.utk.edu/glossary/whatis_rcbd.htm">randomised complete block design</a>, to evaluate the effects of the length of the chopsticks on the food-serving performance of adults and children. Thirty-one male junior college students and 21 primary school pupils served as subjects for the experiment to test chopsticks lengths of 180, 210, 240, 270, 300, and 330 mm. The results showed that the food-pinching performance was significantly affected by the length of the chopsticks, and that chopsticks of about 240 and 180 mm long were optimal for adults and pupils, respectively. Based on these findings, the researchers suggested that families with children should provide both 240 and 180 mm long chopsticks. In addition, restaurants could provide 210 mm long chopsticks, considering the trade-offs between ergonomics and cost.</p>
+<h3>For the rest of this project, answer all questions based only on the part of the experiment analyzing the thirty-one adult male college students.</h3>
+<p>Download the <a href="https://www.udacity.com/api/nodes/4576183932/supplemental_media/chopstick-effectivenesscsv/download">data set for the adults</a>, then answer the following questions based on the abstract and the data set.</p>
+<p><strong>If you double click on this cell</strong>, you will see the text change so that all of the formatting is removed. This allows you to edit this block of text. This block of text is written using <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a>, which is a way to format text using headers, links, italics, and many other options. You will learn more about Markdown later in the Nanodegree Program. Hit shift + enter or shift + return to show the formatted text.</p>
+<h4>1. What is the independent variable in the experiment?</h4>
+<p>The length of the chopsticks.</p>
+<h4>2. What is the dependent variable in the experiment?</h4>
+<p>The food pinching performance/efficiency. </p>
+<h4>3. How is the dependent variable operationally defined?</h4>
+<p>It is the number of peanuts a participant was able to successfully place into a cup.</p>
+<h4>4. Based on the description of the experiment and the data set, list at least two variables that you know were controlled.</h4>
+<p>Think about the participants who generated the data and what they have in common. You don't need to guess any variables or read the full paper to determine these variables. (For example, it seems plausible that the material of the chopsticks was held constant, but this is not stated in the abstract or data description. Because of this, chopstick length should not be cited as a controlled variable.)</p>
+<p>The age and demographics of the study participants.  The time permitted for completing the task (putting peanuts into the cup).  The environment where the experiment was performed. </p>
+<p>One great advantage of ipython notebooks is that you can document your data analysis using code, add comments to the code, or even add blocks of text using Markdown. These notebooks allow you to collaborate with others and share your work. For now, let's see some code for doing statistics.</p>
+<div class="highlight"><pre><span class="n">path</span> <span class="o">=</span> <span class="s">r&#39;~/Downloads/chopstick-effectiveness.csv&#39;</span>
+<span class="c"># Change the path to the location where the chopstick-effectiveness.csv file is located on your computer.</span>
+<span class="c"># If you get an error when running this block of code, be sure the chopstick-effectiveness.csv is located at the path on your computer.</span>
+
+<span class="n">dataFrame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="n">dataFrame</span>
+</pre></div>
+
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Food.Pinching.Efficiency</th>
+      <th>Individual</th>
+      <th>Chopstick.Length</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>19.55</td>
+      <td>1</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>27.24</td>
+      <td>2</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>28.76</td>
+      <td>3</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>31.19</td>
+      <td>4</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>21.91</td>
+      <td>5</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>27.62</td>
+      <td>6</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>29.46</td>
+      <td>7</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>26.35</td>
+      <td>8</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>26.69</td>
+      <td>9</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>30.22</td>
+      <td>10</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>27.81</td>
+      <td>11</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>23.46</td>
+      <td>12</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>23.64</td>
+      <td>13</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>27.85</td>
+      <td>14</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>20.62</td>
+      <td>15</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>25.35</td>
+      <td>16</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>28.00</td>
+      <td>17</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>23.49</td>
+      <td>18</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>27.77</td>
+      <td>19</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>18.48</td>
+      <td>20</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>23.01</td>
+      <td>21</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>22.66</td>
+      <td>22</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>23.24</td>
+      <td>23</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>22.82</td>
+      <td>24</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>17.94</td>
+      <td>25</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>26.67</td>
+      <td>26</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>28.98</td>
+      <td>27</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>21.48</td>
+      <td>28</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>14.47</td>
+      <td>29</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>28.29</td>
+      <td>30</td>
+      <td>180</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>156</th>
+      <td>26.18</td>
+      <td>2</td>
+      <td>330</td>
+    </tr>
+    <tr>
+      <th>157</th>
+      <td>25.93</td>
+      <td>3</td>
+      <td>330</td>
+    </tr>
+    <tr>
+      <th>158</th>
+      <td>28.61</td>
+      <td>4</td>
+      <td>330</td>
+    </tr>
+    <tr>
+      <th>159</th>
+      <td>20.54</td>
+      <td>5</td>
+      <td>330</td>
+    </tr>
+    <tr>
+      <th>160</th>
+      <td>26.44</td>
+      <td>6</td>
+      <td>330</td>
+    </tr>
+    <tr>
+      <th>161</th>
+      <td>29.36</td>
+      <td>7</td>
+      <td>330</td>
+    </tr>
+    <tr>
+      <th>162</th>
+      <td>19.77</td>
+      <td>8</td>
+      <td>330</td>
+    </tr>
+    <tr>
+      <th>163</th>
+      <td>31.69</td>
+      <td>9</td>
+      <td>330</td>
+    </tr>
+    <tr>
+      <th>164</th>
+      <td>24.64</td>
+      <td>10</td>
+      <td>330</td>
+    </tr>
+    <tr>
+      <th>165</th>
+      <td>22.09</td>
+      <td>11</td>
+      <td>330</td>
+    </tr>
+    <tr>
+      <th>166</th>
+      <td>23.42</td>
+      <td>12</td>
+      <td>330</td>
+    </tr>
+    <tr>
+      <th>167</th>
+      <td>28.63</td>
+      <td>13</td>
+      <td>330</td>
+    </tr>
+    <tr>
+      <th>168</th>
+      <td>26.30</td>
+      <td>14</td>
+      <td>330</td>
+    </tr>
+    <tr>
+      <th>169</th>
+      <td>22.89</td>
+      <td>15</td>
+      <td>330</td>
+    </tr>
+    <tr>
+      <th>170</th>
+      <td>22.68</td>
+      <td>16</td>
+      <td>330</td>
+    </tr>
+    <tr>
+      <th>171</th>
+      <td>30.92</td>
+      <td>17</td>
+      <td>330</td>
+    </tr>
+    <tr>
+      <th>172</th>
+      <td>20.74</td>
+      <td>18</td>
+      <td>330</td>
+    </tr>
+    <tr>
+      <th>173</th>
+      <td>27.24</td>
+      <td>19</td>
+      <td>330</td>
+    </tr>
+    <tr>
+      <th>174</th>
+      <td>17.12</td>
+      <td>20</td>
+      <td>330</td>
+    </tr>
+    <tr>
+      <th>175</th>
+      <td>23.63</td>
+      <td>21</td>
+      <td>330</td>
+    </tr>
+    <tr>
+      <th>176</th>
+      <td>20.91</td>
+      <td>22</td>
+      <td>330</td>
+    </tr>
+    <tr>
+      <th>177</th>
+      <td>23.49</td>
+      <td>23</td>
+      <td>330</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>24.86</td>
+      <td>24</td>
+      <td>330</td>
+    </tr>
+    <tr>
+      <th>179</th>
+      <td>16.28</td>
+      <td>25</td>
+      <td>330</td>
+    </tr>
+    <tr>
+      <th>180</th>
+      <td>21.52</td>
+      <td>26</td>
+      <td>330</td>
+    </tr>
+    <tr>
+      <th>181</th>
+      <td>27.22</td>
+      <td>27</td>
+      <td>330</td>
+    </tr>
+    <tr>
+      <th>182</th>
+      <td>17.41</td>
+      <td>28</td>
+      <td>330</td>
+    </tr>
+    <tr>
+      <th>183</th>
+      <td>16.42</td>
+      <td>29</td>
+      <td>330</td>
+    </tr>
+    <tr>
+      <th>184</th>
+      <td>28.22</td>
+      <td>30</td>
+      <td>330</td>
+    </tr>
+    <tr>
+      <th>185</th>
+      <td>27.52</td>
+      <td>31</td>
+      <td>330</td>
+    </tr>
+  </tbody>
+</table>
+<p>186 rows × 3 columns</p>
+</div>
+
+<p>Let's do a basic statistical calculation on the data using code! Run the block of code below to calculate the average "Food Pinching Efficiency" for all 31 participants and all chopstick lengths.</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="c"># pandas is a software library for data manipulation and analysis</span>
+<span class="c"># We commonly use shorter nicknames for certain packages. Pandas is often abbreviated to pd.</span>
+<span class="c"># hit shift + enter to run this cell or block of code</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span class="n">dataFrame</span><span class="p">[</span><span class="s">&#39;Food.Pinching.Efficiency&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+
+
+<div class="highlight"><pre>25.00559139784947
+</pre></div>
+
+
+<p>This number is helpful, but the number doesn't let us know which of the chopstick lengths performed best for the thirty-one male junior college students. Let's break down the data by chopstick length. The next block of code will generate the average "Food Pinching Effeciency" for each chopstick length. Run the block of code below.</p>
+<div class="highlight"><pre><span class="n">meansByChopstickLength</span> <span class="o">=</span> <span class="n">dataFrame</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">&#39;Chopstick.Length&#39;</span><span class="p">)[</span><span class="s">&#39;Food.Pinching.Efficiency&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">meansByChopstickLength</span>
+
+<span class="c"># reset_index() changes Chopstick.Length from an index to column. Instead of the index being the length of the chopsticks, the index is the row numbers 0, 1, 2, 3, 4, 5.</span>
+</pre></div>
+
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Chopstick.Length</th>
+      <th>Food.Pinching.Efficiency</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>180</td>
+      <td>24.935161</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>210</td>
+      <td>25.483871</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>240</td>
+      <td>26.322903</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>270</td>
+      <td>24.323871</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>300</td>
+      <td>24.968065</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>330</td>
+      <td>23.999677</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h4>5. Which chopstick length performed the best for the group of thirty-one male junior college students?</h4>
+<p>The 240 mm chopsticks.</p>
+<div class="highlight"><pre><span class="c"># Causes plots to display within the notebook rather than in a new window</span>
+<span class="o">%</span><span class="n">pylab</span> <span class="n">inline</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">meansByChopstickLength</span><span class="p">[</span><span class="s">&#39;Chopstick.Length&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">meansByChopstickLength</span><span class="p">[</span><span class="s">&#39;Food.Pinching.Efficiency&#39;</span><span class="p">])</span>
+            <span class="c"># title=&quot;&quot;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&quot;Length in mm&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&quot;Efficiency in PPPC&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&quot;Average Food Pinching Efficiency by Chopstick Length&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+
+<div class="highlight"><pre>Populating the interactive namespace from numpy and matplotlib
+</pre></div>
+
+
+<p><img alt="png" src="images/Project0_13_1.png" /></p>
+<h4>6. Based on the scatterplot created from the code above, interpret the relationship you see. What do you notice?</h4>
+<p>The food pinching effiency appears to peak at 240 mm and decline for both shorter and longer lengths.  The decline appears to be more rapid when increasing chopstick length.  </p>
+<p>The rapid drop at 270 mm also stands out.  There might be a reason for the sharp drop, or it might indicate there is signficant variability with the results.  </p>
+<h3>In the abstract the researchers stated that their results showed food-pinching performance was significantly affected by the length of the chopsticks, and that chopsticks of about 240 mm long were optimal for adults.</h3>
+<h4>7a. Based on the data you have analyzed, do you agree with the claim?</h4>
+<p>No. </p>
+<h4>7b. Why?</h4>
+<p>There are not a enough data points, and without a compelling argument for the the anomalously low value at 270 mm, it seems most likely to be due to normal variability in the results. Since I expect similar variability at other lenghts, it's hard to know whether the apparent improvement would be smaller or even nonexistant in repeated experiments.  </p>
+<div class="highlight"><pre>
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
